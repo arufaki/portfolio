@@ -1,0 +1,71 @@
+---
+import Footer from "../Molecules/Footer.astro";
+import Header from "../Molecules/Header.astro";
+---
+
+<Header />
+<main>
+  <section>
+    <h1 class="name">Hi, I’m <strong>Anggi!</strong></h1>
+    <article>
+      <p>
+        I’m a front-end developer specializing in creating beautiful,
+        functional, and user-friendly interfaces. My main focus is on delivering
+        seamless user experiences by combining modern web technologies with a
+        deep understanding of design principles.
+      </p>
+      <p>
+        While my expertise lies in front-end development, I’m also passionate
+        about continuously improving my skills and building complete web
+        applications that solve real-world problems. I enjoy turning ideas into
+        interactive and visually appealing digital experiences.
+      </p>
+      <p>
+        Outside of coding, I love riding my motorcycle and exploring new places.
+        It’s a hobby that helps me unwind, stay inspired, and recharge my
+        creativity. Whether it’s tackling challenging code or taking a scenic
+        route, I’m always ready for the journey!
+      </p>
+    </article>
+  </section>
+</main>
+<Footer />
+
+<style>
+  main {
+    max-width: 685px;
+    margin: 10vh auto;
+    height: 100%;
+  }
+
+  .name {
+    font-weight: 400;
+    font-style: italic;
+    color: #575758;
+    font-size: 36px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 18px;
+    color: #575758;
+    line-height: 35px;
+    width: 100%;
+  }
+
+  article {
+    width: 100%;
+    margin: 25px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 23px;
+  }
+
+  @media (max-width: 768px) {
+    article {
+      margin: 50px 0;
+      gap: 32px;
+    }
+  }
+</style>
