@@ -1,0 +1,175 @@
+<header>
+  <h1 class="logo">Anggi</h1>
+  <nav>
+    <ul class="list">
+      {
+        ["about", "projects", "blog", "contact me!"].map((route, index) => {
+          const href = index === 0 ? "/" : `/${route}`;
+          const isActive = Astro.url.pathname === href;
+          return (
+            <li class={isActive ? "active" : ""}>
+              <a href={href}>{route}</a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+
+  <img
+    src="/sun.svg"
+    class="theme"
+    fetchpriority="high"
+    width="24"
+    height="24"
+  />
+
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<script>
+  const hamburger = document.querySelector(".hamburger");
+  const nav = document.querySelector("nav");
+
+  hamburger?.addEventListener("click", () => {
+    nav?.classList.toggle("active");
+  });
+</script>
+
+<style>
+  header {
+    margin: 25px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .logo {
+    color: #1e1e1e;
+    font-weight: 900;
+    letter-spacing: -1px;
+    font-style: italic;
+    cursor: pointer;
+    font-size: 32px;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    z-index: 20;
+    width: fit-content;
+  }
+
+  .hamburger > span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    border-radius: 4px;
+    background-color: #1e1e1e;
+  }
+
+  nav {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    margin-top: 20px;
+    gap: 24px;
+    list-style: none;
+    text-align: end;
+  }
+
+  li {
+    cursor: pointer;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 16px;
+    color: #1e1e1e;
+    width: fit-content;
+  }
+
+  a {
+    color: #1e1e1e;
+  }
+
+  .theme {
+    width: fit-content;
+    padding-right: 20px;
+    cursor: pointer;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+
+    nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      display: none;
+    }
+
+    nav.active {
+      display: block;
+    }
+
+    ul {
+      flex-direction: column;
+      justify-content: end;
+      align-items: end;
+      gap: 16px;
+    }
+  }
+
+  .list li.active a {
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+  }
+
+  @media (min-width: 769px) {
+    header {
+      max-width: 1200px;
+      margin: 50px auto;
+    }
+
+    .logo {
+      flex: 1 50%;
+    }
+
+    nav {
+      display: block;
+      flex: 1 50%;
+      margin: 0 40px;
+    }
+
+    ul {
+      margin-top: 0;
+      text-align: start;
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+    }
+
+    li {
+      white-space: nowrap;
+      font-size: 20px;
+    }
+
+    .theme {
+      flex: 1 50%;
+      width: 24px;
+      padding-right: 0;
+    }
+  }
+</style>

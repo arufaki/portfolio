@@ -1,0 +1,163 @@
+---
+import Footer from "../Molecules/Footer.astro";
+import Header from "../Molecules/Header.astro";
+import { Image } from "astro:assets";
+import eye from "../../../public/eye.svg";
+import github from "../../../public/github.svg";
+import projectsData from "../../utils/projectsData";
+---
+
+<Header />
+<main>
+  <section>
+    <h1>My Projects</h1>
+    <!-- card -->
+    <div class="cards">
+      {
+        projectsData?.map((item) => (
+          <div class="card">
+            <div class="preview-image">
+              <Image
+                src={item.thumb}
+                fetchpriority="high"
+                alt="Project preview"
+              />
+            </div>
+            <div class="card-content">
+              <div class="title">
+                <h3>{item.title}</h3>
+                {item.links.github && (
+                  <a href={item.links.github} target="_blank" class="github">
+                    <Image
+                      src={github}
+                      fetchpriority="high"
+                      alt="project-link"
+                      width={24}
+                    />
+                  </a>
+                )}
+                {item.links.deploy && (
+                  <a href={item.links.deploy} target="_blank" class="eye">
+                    <Image src={eye} fetchpriority="high" alt="project-link" />
+                  </a>
+                )}
+              </div>
+              <p>{item.description}</p>
+              <div class="tech-stack">
+                {item.stack.map((tech) => (
+                  <span class="tech-tag">{tech}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</main>
+<Footer />
+
+<style>
+  section {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  h1 {
+    color: #575758;
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .title {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .github {
+    width: fit-content;
+    height: fit-content;
+    margin-left: 10px;
+    flex: 1 50%;
+  }
+
+  .eye {
+    flex: 1 50%;
+    padding-left: 10px;
+  }
+
+  .cards {
+    margin: 70px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    width: 100%;
+    max-width: 350px;
+    border: 1px solid rgba(62, 62, 62, 0.15);
+  }
+
+  .preview-image {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .preview-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-content {
+    max-width: 330px;
+  }
+
+  h3 {
+    flex: 1 50%;
+    padding-left: 14px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #242424;
+  }
+
+  p {
+    padding: 10px 0 14px 14px;
+    color: #575758;
+    font-size: 16px;
+    line-height: 1.5;
+    /* margin: 0 0 16px 0; */
+    margin: 0 auto;
+    max-width: 330px;
+  }
+
+  .tech-stack {
+    padding: 0 14px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tech-tag {
+    background: #54d397;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    width: fit-content;
+  }
+</style>
