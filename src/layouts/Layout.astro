@@ -1,4 +1,5 @@
 ---
+import { SEO } from "astro-seo";
 import "../styles/global.css";
 ---
 
@@ -16,6 +17,49 @@ import "../styles/global.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Anggi's Portfolio</title>
+
+    <SEO
+      title="Alfakih Anggi Subekti - Front-End Developer"
+      description="Alfakih Anggi Subekti is a passionate Front-End Developer who specializes in creating functional and visually appealing web applications. Explore his portfolio and connect via social media."
+      openGraph={{
+        basic: {
+          title: "Alfakih Anggi Subekti - Front-End Developer",
+          type: "website",
+          image: "https://avatars.githubusercontent.com/u/94790954?v=4", // Ganti dengan gambar relevan kamu
+        },
+      }}
+      twitter={{
+        creator: "@fakikazorla",
+        card: "summary_large_image", // Supaya tampilan Twitter lebih besar dan menarik
+      }}
+      extend={{
+        // Add custom meta tags for contact and social links
+        link: [{ rel: "icon", href: "/favicon.ico" }],
+        meta: [
+          {
+            name: "twitter:image",
+            content: "https://avatars.githubusercontent.com/u/94790954?v=4", // Ganti dengan gambar relevan
+          },
+          {
+            name: "twitter:title",
+            content: "Alfakih Anggi Subekti - Front-End Developer",
+          },
+          {
+            name: "twitter:description",
+            content: "Explore my web development projects and connect with me!",
+          },
+          // Social Media meta tags
+          { name: "twitter:creator", content: "@fakikazorla" },
+          { name: "og:email", content: "fakihkazorla@gmail.com" },
+          { name: "og:github", content: "https://github.com/arufaki" },
+          {
+            name: "og:linkedin",
+            content: "https://www.linkedin.com/in/alfakihanggi/",
+          },
+          { name: "og:twitter", content: "https://x.com/fakikazorla" },
+        ],
+      }}
+    />
   </head>
   <body class="container">
     <slot />
