@@ -1,3 +1,7 @@
+---
+import "../styles/global.css";
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,3 +21,19 @@
     <slot />
   </body>
 </html>
+
+<script>
+  const hamburger = document.querySelector(".hamburger");
+  const main = document.querySelector("main");
+  const nav = document.querySelector("nav");
+
+  hamburger?.addEventListener("click", () => {
+    if (main) {
+      if (nav?.classList.contains("active")) {
+        main.style.marginTop = "150px";
+      } else {
+        main.style.marginTop = "0px";
+      }
+    }
+  });
+</script>

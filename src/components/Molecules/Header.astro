@@ -3,15 +3,22 @@
   <nav>
     <ul class="list">
       {
-        ["about", "projects", "blog", "contact me!"].map((route, index) => {
-          const href = index === 0 ? "/" : `/${route}`;
-          const isActive = Astro.url.pathname === href;
-          return (
-            <li class={isActive ? "active" : ""}>
-              <a href={href}>{route}</a>
-            </li>
-          );
-        })
+        ["about", "projects", "blog", "contact me!"].map(
+          (route, index, arr) => {
+            const href =
+              index === 0
+                ? "/"
+                : index === arr.length - 1
+                  ? "/contact"
+                  : `/${route}`;
+            const isActive = Astro.url.pathname === href;
+            return (
+              <li class={isActive ? "active" : ""}>
+                <a href={href}>{route}</a>
+              </li>
+            );
+          },
+        )
       }
     </ul>
   </nav>
