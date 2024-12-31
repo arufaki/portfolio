@@ -1,0 +1,96 @@
+---
+import { Image } from "astro:assets";
+import Footer from "../Molecules/Footer.astro";
+import Header from "../Molecules/Header.astro";
+import contactData from "../../utils/contactData";
+---
+
+<Header />
+<main>
+  <section>
+    <h1>Contact Me!</h1>
+    <p>
+      I'm always interested in hearing about new projects and opportunities.
+      Feel free to reach out through any of these platforms :
+    </p>
+    <div class="cards">
+      {
+        contactData?.map((contact) => (
+          <div class="card">
+            <Image
+              src={contact.image}
+              alt="email-icon"
+              fetchpriority="high"
+              class="icon"
+            />
+            <div class="content">
+              <h4>{contact.title}</h4>
+              <a href={contact.links.href}>{contact.links.body}</a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</main>
+<Footer />
+
+<style>
+  h1 {
+    color: #575758;
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  p {
+    font-size: 18px;
+    color: #575758;
+    line-height: 35px;
+    text-align: center;
+    max-width: 587px;
+    margin: 0 auto;
+    padding: 17px 0 50px;
+  }
+
+  .cards {
+    margin-bottom: 15vh;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    max-width: 300px;
+    background-color: #fafafa;
+    padding: 5px 10px;
+    border: 1px solid rgba(33, 33, 33, 0.1);
+    border-radius: 6px;
+    margin: 0 auto 17px;
+  }
+
+  .icon {
+    width: fit-content;
+  }
+
+  .content {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  h4 {
+    font-size: 18px;
+    color: #575758;
+    font-weight: 600;
+  }
+
+  a {
+    color: #575758;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+</style>
